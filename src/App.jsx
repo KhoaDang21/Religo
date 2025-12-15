@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 // Components
@@ -16,9 +16,16 @@ import {
   reality,
   policies,
   vnFeatures,
+  vnFeaturesImage,
+  vnFeaturesImages,
 } from "./data/content";
 
 function App() {
+  const [featureImgIndex, setFeatureImgIndex] = useState(0);
+  const featureImages =
+    (vnFeaturesImages && vnFeaturesImages.length > 0 && vnFeaturesImages) ||
+    (vnFeaturesImage ? [vnFeaturesImage] : []);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -103,6 +110,23 @@ function App() {
               className="card soft animate-on-scroll"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {item.image && (
+                <div className="card-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="card-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="card-image-placeholder" style={{ display: 'none' }}>
+                    <span className="placeholder-icon">🖼️</span>
+                    <span className="placeholder-text">Hình ảnh</span>
+                  </div>
+                </div>
+              )}
               <div className="icon">{item.icon}</div>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
@@ -127,6 +151,23 @@ function App() {
               className="card animate-on-scroll"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
+              {item.image && (
+                <div className="card-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="card-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="card-image-placeholder" style={{ display: 'none' }}>
+                    <span className="placeholder-icon">🖼️</span>
+                    <span className="placeholder-text">Hình ảnh</span>
+                  </div>
+                </div>
+              )}
               <div className="tagline">{item.title}</div>
               <ul className="bullet-list">
                 {item.points.map((point) => (
@@ -150,6 +191,23 @@ function App() {
               className="card deep animate-on-scroll"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
+              {item.image && (
+                <div className="card-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="card-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="card-image-placeholder" style={{ display: 'none' }}>
+                    <span className="placeholder-icon">🖼️</span>
+                    <span className="placeholder-text">Hình ảnh</span>
+                  </div>
+                </div>
+              )}
               <div className="icon">{item.icon}</div>
               <div className="tagline">{item.title}</div>
               <p>{item.desc}</p>
@@ -188,6 +246,67 @@ function App() {
           </p>
         </div>
         <div className="card highlight animate-on-scroll">
+          {(vnFeaturesImages?.length > 0 || vnFeaturesImage) && (
+            <div className="feature-slider">
+              <button
+                className="feature-nav prev"
+                aria-label="Ảnh trước"
+                onClick={() =>
+                  setFeatureImgIndex((prev) =>
+                    prev === 0 ? featureImages.length - 1 : prev - 1
+                  )
+                }
+              >
+                ‹
+              </button>
+
+              <div className="feature-image-wrapper">
+                <img
+                  src={featureImages[featureImgIndex]}
+                  alt="Đặc điểm tôn giáo tại Việt Nam"
+                  className="feature-image"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                    e.target.nextSibling.style.display = "flex";
+                  }}
+                />
+                <div
+                  className="card-image-placeholder"
+                  style={{ display: "none" }}
+                >
+                  <span className="placeholder-icon">🖼️</span>
+                  <span className="placeholder-text">Hình ảnh</span>
+                </div>
+              </div>
+
+              <button
+                className="feature-nav next"
+                aria-label="Ảnh tiếp"
+                onClick={() =>
+                  setFeatureImgIndex((prev) =>
+                    prev === featureImages.length - 1 ? 0 : prev + 1
+                  )
+                }
+              >
+                ›
+              </button>
+            </div>
+          )}
+
+          {featureImages.length > 1 && (
+            <div className="feature-dots">
+              {featureImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`feature-dot ${
+                    idx === featureImgIndex ? "active" : ""
+                  }`}
+                  aria-label={`Chuyển tới ảnh ${idx + 1}`}
+                  onClick={() => setFeatureImgIndex(idx)}
+                />
+              ))}
+            </div>
+          )}
           <h3>Đặc điểm tôn giáo tại Việt Nam</h3>
           <ul className="bullet-list">
             {vnFeatures.map((item) => (
@@ -203,6 +322,23 @@ function App() {
               className="card soft animate-on-scroll"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {item.image && (
+                <div className="card-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="card-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="card-image-placeholder" style={{ display: 'none' }}>
+                    <span className="placeholder-icon">🖼️</span>
+                    <span className="placeholder-text">Hình ảnh</span>
+                  </div>
+                </div>
+              )}
               <div className="tagline">{item.title}</div>
               <p>{item.text}</p>
             </div>
@@ -226,7 +362,24 @@ function App() {
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               <div className="step">0{idx + 1}</div>
-              <div>
+              <div style={{ flex: 1 }}>
+                {item.image && (
+                  <div className="policy-image-wrapper">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="policy-image"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="card-image-placeholder" style={{ display: 'none' }}>
+                      <span className="placeholder-icon">🖼️</span>
+                      <span className="placeholder-text">Hình ảnh</span>
+                    </div>
+                  </div>
+                )}
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>

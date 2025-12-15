@@ -571,6 +571,140 @@ body {
   box-shadow: 0 8px 32px rgba(45, 55, 72, 0.08);
 }
 
+/* Card Images */
+.card-image-wrapper {
+  width: 100%;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.08);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.card:hover .card-image {
+  transform: scale(1.08);
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(44, 85, 48, 0.05));
+  color: var(--text-muted);
+  gap: 12px;
+}
+
+.card-image-placeholder .placeholder-icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.card-image-placeholder .placeholder-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Feature Images Grid */
+.feature-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.feature-image-wrapper {
+  width: 100%;
+  height: 720px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(45, 55, 72, 0.06);
+}
+
+.feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.feature-image-wrapper:hover .feature-image {
+  transform: scale(1.05);
+}
+
+.feature-slider {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.feature-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 20px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(45, 55, 72, 0.08);
+}
+
+.feature-nav:hover {
+  background: var(--surface-alt);
+  transform: translateY(-2px);
+}
+
+.feature-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 6px 0 18px;
+}
+
+.feature-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(44, 85, 48, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feature-dot.active {
+  background: var(--primary);
+  transform: scale(1.2);
+}
 .card.highlight {
   background: linear-gradient(135deg, rgba(201, 169, 110, 0.12), var(--surface));
   border-color: var(--accent-light);
@@ -819,6 +953,62 @@ body {
 
 .policy-card:hover .step {
   transform: scale(1.1);
+}
+
+/* Policy Card Images */
+.policy-image-wrapper {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.08);
+}
+
+.policy-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.policy-card:hover .policy-image {
+  transform: scale(1.05);
+}
+
+/* Accordion Images */
+.accordion-image-wrapper {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.08);
+}
+
+.accordion-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.accordion-item:hover .accordion-image {
+  transform: scale(1.05);
 }
 
 /* Image Gallery */
@@ -1314,6 +1504,41 @@ body {
   
   .card {
     padding: 24px;
+  }
+
+  .feature-images-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .feature-image-wrapper {
+    height: 200px;
+  }
+
+  .feature-slider {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .feature-nav {
+    width: 40px;
+    height: 40px;
+    justify-self: center;
+  }
+  
+  .card-image-wrapper {
+    height: 220px;
+    margin-bottom: 20px;
+  }
+  
+  .policy-image-wrapper {
+    height: 180px;
+    margin-bottom: 16px;
+  }
+  
+  .accordion-image-wrapper {
+    height: 180px;
+    margin-bottom: 16px;
   }
   
   .accordion {
