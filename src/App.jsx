@@ -341,6 +341,18 @@ function App() {
               )}
               <div className="tagline">{item.title}</div>
               <p>{item.text}</p>
+              {item.link && (
+                <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                  <a 
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-reference-link"
+                  >
+                    🔗 {item.linkText}
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>
