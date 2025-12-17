@@ -162,6 +162,7 @@ body {
   padding: 12px 24px;
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: var(--text-primary);
+  text-decoration: none;
   border: none;
   border-radius: 50px;
   font-weight: 600;
@@ -177,6 +178,8 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 215, 0, 0.5);
   background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
 .flipbook-btn:active {

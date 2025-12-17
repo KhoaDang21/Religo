@@ -47,11 +47,16 @@ function Header() {
             </span>
           </button>
 
-          <button className="flipbook-btn">
+          <a
+            href="https://indd.adobe.com/view/b1f1f306-70fc-417b-9c07-d42f64913530"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flipbook-btn"
+          >
             <span className="flipbook-icon">📖</span>
             <span className="flipbook-text">FlipBook</span>
             <span className="flipbook-shine"></span>
-          </button>
+          </a>
         </div>
       </div>
 
