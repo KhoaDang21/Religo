@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,27 @@ function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle ESC key to close flipbook
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isFlipbookOpen) {
+        setIsFlipbookOpen(false);
+      }
+    };
+
+    if (isFlipbookOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-open');
+    };
+  }, [isFlipbookOpen]);
 
   return (
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
@@ -47,16 +69,14 @@ function Header() {
             </span>
           </button>
 
-          <a
-            href="https://indd.adobe.com/view/b1f1f306-70fc-417b-9c07-d42f64913530"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="flipbook-btn"
+            onClick={() => setIsFlipbookOpen(true)}
           >
             <span className="flipbook-icon">📖</span>
             <span className="flipbook-text">FlipBook</span>
             <span className="flipbook-shine"></span>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -81,6 +101,28 @@ function Header() {
           Tôn giáo ở VN
         </a>
       </div>
+
+      {/* Flipbook Modal */}
+      {isFlipbookOpen && (
+        <div className="flipbook-modal">
+          <div className="flipbook-modal-content">
+            <button 
+              className="flipbook-close"
+              onClick={() => setIsFlipbookOpen(false)}
+            >
+              ✕
+            </button>
+            <iframe
+              src="https://indd.adobe.com/view/b1f1f306-70fc-417b-9c07-d42f64913530"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              title="MLN131 FlipBook"
+            />
+          </div>
+        </div>
+      )}
     </header>
   );
 }
